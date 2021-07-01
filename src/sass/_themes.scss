@@ -1,0 +1,166 @@
+@mixin theme(
+  $first-color,
+  $sec-color: $black,
+  $thi-color: $white,
+  $alt-color: $yellow
+) {
+  background: linear-gradient(
+    to bottom,
+    $first-color 0%,
+    $first-color 50%,
+    $sec-color 100%
+  );
+  color: $thi-color;
+
+  #detail-page {
+
+    .back-shadow {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 30%,
+        rgba(0, 0, 0, 0.7) 60%,
+        $sec-color 90%
+      );
+    }
+
+    i {
+      color: $alt-color;
+    }
+  }
+
+  #header {
+    i {
+      color: $alt-color;
+    }
+    .controls {
+      .search-bar {
+        border: solid 2px $alt-color;
+      }
+      .search-bar:focus {
+        width: 100%;
+        background-color: $white;
+        border: solid 3px $alt-color;
+        color: $black;
+      }
+    }
+  }
+
+  #movies {
+    .hero-image {
+      .cover {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 50%,
+          rgba(0, 0, 0, 0.7) 70%,
+          $first-color 90%
+        );
+
+        color: $thi-color;
+
+        i {
+          color: $alt-color;
+        }
+      }
+    }
+
+    .collection {
+      color: $white;
+
+      .collection-info h1 {
+        color: $alt-color;
+      }
+    }
+
+    .load-controls {
+      button:hover {
+        i {
+          color: $alt-color;
+        }
+      }
+    }
+  }
+
+  #footer {
+    .contact {
+      a:hover {
+        color: $alt-color;
+      }
+    }
+  }
+
+  #base-button {
+    a,
+    button {
+      color: $white;
+    }
+
+    .alt-button {
+      background-color: $first-color;
+      color: $thi-color;
+    }
+
+    a:hover i,
+    button:hover i {
+      color: $white;
+    }
+
+    a:hover,
+    button:hover {
+      background-color: $alt-color;
+      color: $white;
+    }
+  }
+
+  .spinner-container {
+    .lds-dual-ring:after {
+      border: 6px solid $alt-color;
+      border-color: $alt-color transparent $alt-color transparent;
+    }
+  }
+}
+
+// ofiginal----------------------
+
+.original {
+  @include theme($purple);
+}
+
+// green----------------------
+
+.green {
+  @include theme($green, $black, $white, $tomato);
+}
+
+// pink----------------------
+
+.pink {
+  @include theme($pink, $dark-pink, $black, $soft-blue);
+  #movies {
+    .hero-image {
+      .cover {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 50%,
+          rgba(255, 255, 255, 0.555) 70%,
+          $pink 90%
+        );
+
+        i {
+          color: $soft-blue;
+        }
+      }
+    }
+  }
+
+  #detail-page {
+    .back-shadow {
+
+      background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 30%,
+          rgba(255, 255, 255, 0.4) 60%,
+          $pink 90%
+        );
+    }
+  }
+}

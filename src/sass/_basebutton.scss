@@ -1,0 +1,39 @@
+#base-button {
+  a,
+  button {
+    padding: 10px;
+    border-radius: 2rem;
+    transition: all 0.3s ease-out;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+
+  .select-button {
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    color: $white;
+    font-family: inherit;
+
+    select {
+      position: absolute;
+      transform: translateY(0);
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      outline: none;
+      font-family: inherit;
+      border: none;
+      padding: 5px 10px;
+      overflow: scroll;
+      transition: all 0.3s ease-out;
+      cursor: pointer;
+    }
+  }
+
+  .alt-button {
+      font-family: inherit;
+  }
+}
