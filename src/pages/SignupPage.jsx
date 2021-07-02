@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import BaseCard from "../components/ui/BaseCard";
 import BaseButton from "../components/ui/BaseButton";
+import BackButton from "../components/ui/BackButton";
 
 function SingupPage() {
   return (
@@ -12,6 +13,7 @@ function SingupPage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <BackButton />
       <BaseCard title="Sign Up" text="Work in progress...">
         <div className="signup-controls">
           <div className="input">

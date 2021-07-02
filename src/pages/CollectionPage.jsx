@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MoviesSection from "../components/movies/MoviesSection.jsx";
+import BackButton from "../components/ui/BackButton.jsx";
 import TheSpinner from "../components/ui/TheSpinner.jsx";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../config.js";
 
@@ -57,6 +58,7 @@ class CollectionPage extends Component {
         ) : (
           <div className="collection" style={backgroundStyle}>
             <div className="back-shadow">
+              <BackButton />
               <MoviesSection movies={movies} collectionInfo={collectionInfo} />
             </div>
           </div>

@@ -14,13 +14,24 @@ function BaseButton({ mode, link, children, click }) {
         <button className="select-button">{children}</button>
       </div>
     );
-  } else {
-
+  } else if (mode === "left") {
     return (
-    <div id="base-button" onClick={click}>
-      <button className="alt-button">{children}</button>
-    </div>
-    )
+      <button className="light-button" onClick={click}>
+        <i className="fas fa-chevron-left"></i>
+      </button>
+    );
+  } else if (mode === "right") {
+    return (
+      <button className="light-button" onClick={click}>
+        <i className="fas fa-chevron-right"></i>
+      </button>
+    );
+  } else {
+    return (
+      <div id="base-button" onClick={click}>
+        <button className="alt-button">{children}</button>
+      </div>
+    );
   }
 }
 

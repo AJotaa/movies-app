@@ -13,7 +13,6 @@
   color: $thi-color;
 
   #detail-page {
-
     .back-shadow {
       background: linear-gradient(
         to bottom,
@@ -50,8 +49,8 @@
       .cover {
         background: linear-gradient(
           to bottom,
-          rgba(0, 0, 0, 0) 50%,
-          rgba(0, 0, 0, 0.7) 70%,
+          rgba(0, 0, 0, 0) 40%,
+          rgba(0, 0, 0, 0.5) 60%,
           $first-color 90%
         );
 
@@ -94,6 +93,7 @@
       color: $white;
     }
 
+    .light-button,
     .alt-button {
       background-color: $first-color;
       color: $thi-color;
@@ -109,6 +109,10 @@
       background-color: $alt-color;
       color: $white;
     }
+  }
+
+  .light-button:hover {
+    color: $alt-color;
   }
 
   .spinner-container {
@@ -154,13 +158,12 @@
 
   #detail-page {
     .back-shadow {
-
       background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0) 30%,
-          rgba(255, 255, 255, 0.4) 60%,
-          $pink 90%
-        );
+        to bottom,
+        rgba(0, 0, 0, 0) 30%,
+        rgba(255, 255, 255, 0.4) 60%,
+        $pink 90%
+      );
     }
   }
 }

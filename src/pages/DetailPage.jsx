@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TheSpinner from "../components/ui/TheSpinner.jsx";
 import DetailSection from "../components/detail/DetailSection.jsx";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../config.js";
+import BackButton from "../components/ui/BackButton.jsx";
 
 class DetailPage extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class DetailPage extends Component {
       background: backdrop,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
-      backgroundPosition: "center center"
+      backgroundPosition: "center center",
     };
 
     return (
@@ -49,7 +50,10 @@ class DetailPage extends Component {
         {loading ? (
           <TheSpinner />
         ) : (
-          <DetailSection backgroundStyle={backgroundStyle} movie={movie} />
+          <React.Fragment>
+            <BackButton />
+            <DetailSection backgroundStyle={backgroundStyle} movie={movie} />
+          </React.Fragment>
         )}
       </div>
     );

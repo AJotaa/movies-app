@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 import MoreInfo from "./MoreInfo";
 import { IMAGE_BASE_URL } from "../../config.js";
 import { Link } from "react-router-dom";
-// import BaseButton from "../ui/BaseButton.jsx";
 
 function DetailSection({ movie, backgroundStyle }) {
-  // let history = useHistory();
   return (
     <motion.section
       id="detail-page"
@@ -17,11 +15,6 @@ function DetailSection({ movie, backgroundStyle }) {
     >
       <div className="back-shadow">
         <div className="detail-container container">
-          {/* <div className="back-button">
-            <BaseButton mode="button" click={() => history.goBack()}>
-              back
-            </BaseButton>
-          </div> */}
           <div className="movie-detail">
             <h1 className="title">{movie.title}</h1>
             <h2 className="tagline">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BaseButton from "../ui/BaseButton";
 
 function LoadMoreMovies({ currentPage, totalPages, search }) {
   const newPagePrev = currentPage <= 1 ? currentPage : currentPage - 1;
@@ -23,15 +24,11 @@ function LoadMoreMovies({ currentPage, totalPages, search }) {
     <div className="container">
       <div className="load-controls">
         <Link to={pathPrev}>
-          <button>
-            <i className="fas fa-chevron-left"></i>
-          </button>
+          <BaseButton mode="left" />
         </Link>
         <span>{currentPage}</span>
         <Link to={pathNext}>
-          <button>
-            <i className="fas fa-chevron-right"></i>
-          </button>
+          <BaseButton mode="right" />
         </Link>
       </div>
     </div>

@@ -49,7 +49,7 @@ code {
   color: #000;
 }
 .original #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 70%, #1c1c35 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, #1c1c35 90%);
   color: #fff;
 }
 .original #movies .hero-image .cover i {
@@ -71,6 +71,7 @@ code {
 .original #base-button button {
   color: #fff;
 }
+.original #base-button .light-button,
 .original #base-button .alt-button {
   background-color: #1c1c35;
   color: #fff;
@@ -83,6 +84,9 @@ code {
 .original #base-button button:hover {
   background-color: #ffd32a;
   color: #fff;
+}
+.original .light-button:hover {
+  color: #ffd32a;
 }
 .original .spinner-container .lds-dual-ring:after {
   border: 6px solid #ffd32a;
@@ -112,7 +116,7 @@ code {
   color: #000;
 }
 .green #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 70%, #184d47 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, #184d47 90%);
   color: #fff;
 }
 .green #movies .hero-image .cover i {
@@ -134,6 +138,7 @@ code {
 .green #base-button button {
   color: #fff;
 }
+.green #base-button .light-button,
 .green #base-button .alt-button {
   background-color: #184d47;
   color: #fff;
@@ -146,6 +151,9 @@ code {
 .green #base-button button:hover {
   background-color: #f55c47;
   color: #fff;
+}
+.green .light-button:hover {
+  color: #f55c47;
 }
 .green .spinner-container .lds-dual-ring:after {
   border: 6px solid #f55c47;
@@ -175,7 +183,7 @@ code {
   color: #000;
 }
 .pink #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 70%, #ffcccc 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, #ffcccc 90%);
   color: #000;
 }
 .pink #movies .hero-image .cover i {
@@ -197,6 +205,7 @@ code {
 .pink #base-button button {
   color: #fff;
 }
+.pink #base-button .light-button,
 .pink #base-button .alt-button {
   background-color: #ffcccc;
   color: #000;
@@ -209,6 +218,9 @@ code {
 .pink #base-button button:hover {
   background-color: #00ead3;
   color: #fff;
+}
+.pink .light-button:hover {
+  color: #00ead3;
 }
 .pink .spinner-container .lds-dual-ring:after {
   border: 6px solid #00ead3;
@@ -297,28 +309,6 @@ code {
   margin: auto;
   width: 60%;
   font-size: 1.5rem;
-}
-#movies .load-controls button {
-  text-decoration: none;
-  padding: 5px 25px;
-  font-size: 1.6rem;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  color: #fff;
-  transition: all 0.3s ease-out;
-}
-#movies .load-controls button:hover {
-  transform: scale(1.3);
-}
-#movies .load-controls button:active {
-  filter: brightness(0.8);
-}
-#movies .collection .back-shadow {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, black 100%);
-}
-#movies .collection .collection-info {
-  margin-bottom: 50px;
 }
 
 @media (max-width: 1200px) {
@@ -608,6 +598,16 @@ code {
   overflow: hidden;
 }
 
+#movies .collection .back-shadow {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, black 100%);
+}
+#movies .collection .collection-info {
+  margin-top: 70px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #000;
+  font-size: 1.2rem;
+}
+
 #footer {
   height: 8rem;
   border-top: solid 1px #fff;
@@ -801,6 +801,39 @@ code {
 }
 #base-button .alt-button {
   font-family: inherit;
+}
+
+.light-button {
+  text-decoration: none;
+  padding: 5px 25px;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  transition: all 0.3s ease-out;
+}
+
+.light-button:hover {
+  transform: scale(1.3);
+}
+
+.light-button:active {
+  filter: brightness(0.8);
+}
+
+#back-button {
+  position: absolute;
+  left: 20px;
+  top: 4.5rem;
+  z-index: 2;
+}
+#back-button button {
+  padding-left: 10px;
+}
+#back-button i {
+  text-shadow: 1.5px 1.5px 6px #000;
+  font-size: 2rem;
 }
 
 .spinner-container {
