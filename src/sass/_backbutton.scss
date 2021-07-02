@@ -1,0 +1,15 @@
+#back-button {
+  position: absolute;
+  left: 20px;
+  top: 4.5rem;
+  z-index: 2;
+
+  button {
+    padding-left: 10px;
+  }
+
+  i {
+    text-shadow: 1.5px 1.5px 6px $black;
+    font-size: 2rem;
+  }
+}
