@@ -8,6 +8,14 @@ function BaseButton({ mode, link, children, click }) {
         <Link to={link}>{children}</Link>
       </div>
     );
+  } else if (mode === "nav") {
+    return (
+      <div id="base-button">
+        <button className="nav-button" onClick={click}>
+          {children}
+        </button>
+      </div>
+    );
   } else if (mode === "select") {
     return (
       <div id="base-button">

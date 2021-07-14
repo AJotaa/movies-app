@@ -23,9 +23,14 @@ code {
   padding: 0 20px;
 }
 
-.back-button{
-  top: 50px;
-  background: pink;
+.drop-out {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+  // background-color: rosybrown;
 }
 
 // @media (max-width: 1190px) {
@@ -34,5 +39,5 @@ code {
 
 //     padding: 0 10px;
 //   }
-  
+
 // }

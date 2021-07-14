@@ -2,6 +2,9 @@ import React from "react";
 import BaseButton from "../../ui/BaseButton";
 import ConfigOption from "./ConfigOption";
 import SearchBar from "./SearchBar";
+import NavItem from "./NavItem";
+// import DropdownItem from "../../ui/DropdownItem";
+import DropdownMenu from "../../ui/DropdownMenu";
 
 function HeaderControls({
   handleSearchTerm,
@@ -18,21 +21,33 @@ function HeaderControls({
           handleSubmit={handleSubmit}
         />
       </li>
-      <li>
-        <BaseButton mode="link" link="/">
-          <i className="fas fa-home"></i> Home
-        </BaseButton>
-      </li>
-      <li>
-        <BaseButton mode="link" link="/auth/singup">
-          <i className="fas fa-sign-in-alt"></i> Sign Up
-        </BaseButton>
-      </li>
+      <NavItem
+        mode="link"
+        icon={<i className="fas fa-home"></i>}
+        text="Home"
+        link="/"
+      />
+      <NavItem
+        mode="link"
+        icon={<i className="fas fa-sign-in-alt"></i>}
+        text="Sign Up"
+        link="/auth/singup"
+      />
       <li>
         <BaseButton mode="select">
           <ConfigOption selectTheme={selectTheme} />
         </BaseButton>
       </li>
+      <NavItem
+        mode="dropdown"
+        icon={<i className="fas fa-ellipsis-v"></i>}
+        text="More"
+      >
+        <DropdownMenu>
+          {/* <DropdownItem>test</DropdownItem>
+          <DropdownItem>test2</DropdownItem> */}
+        </DropdownMenu>
+      </NavItem>
     </ul>
   );
 }
