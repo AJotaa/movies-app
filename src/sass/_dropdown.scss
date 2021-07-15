@@ -4,8 +4,6 @@
   width: 200px;
   margin-top: 5px;
   transform: translateX(-70%);
-  background-color: $purple;
-  color: $white;
   font-family: inherit;
   border-radius: 5px;
   overflow: hidden;
@@ -19,27 +17,24 @@
     width: 100%;
   }
 
-  i {
-    color: $white !important;
-  }
-
   .dropdown-item {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 3rem;
     width: 100%;
     padding: 0.5rem;
     border-radius: 5px;
     transition: all 0.3s;
 
     .icon-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-right: 10px;
-
-      i {
-        padding: 10px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.25);
-      }
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.25);
     }
 
     .icon-right {
@@ -48,8 +43,6 @@
   }
 
   .dropdown-item:hover {
-    color: $white;
-    background-color: $yellow;
     cursor: pointer;
   }
 }

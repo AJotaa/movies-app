@@ -95,6 +95,16 @@ code {
 .original .light-button:hover {
   color: #ffd32a;
 }
+.original .dropdown-menu {
+  background-color: #1c1c35;
+  color: #fff;
+}
+.original .dropdown-menu i {
+  color: #fff !important;
+}
+.original .dropdown-menu .dropdown-item:hover {
+  background-color: #ffd32a;
+}
 .original .spinner-container .lds-dual-ring:after {
   border: 6px solid #ffd32a;
   border-color: #ffd32a transparent #ffd32a transparent;
@@ -165,6 +175,16 @@ code {
 .green .light-button:hover {
   color: #f55c47;
 }
+.green .dropdown-menu {
+  background-color: #184d47;
+  color: #fff;
+}
+.green .dropdown-menu i {
+  color: #fff !important;
+}
+.green .dropdown-menu .dropdown-item:hover {
+  background-color: #f55c47;
+}
 .green .spinner-container .lds-dual-ring:after {
   border: 6px solid #f55c47;
   border-color: #f55c47 transparent #f55c47 transparent;
@@ -234,6 +254,16 @@ code {
 }
 .pink .light-button:hover {
   color: #00ead3;
+}
+.pink .dropdown-menu {
+  background-color: #ffcccc;
+  color: #000;
+}
+.pink .dropdown-menu i {
+  color: #000 !important;
+}
+.pink .dropdown-menu .dropdown-item:hover {
+  background-color: #00ead3;
 }
 .pink .spinner-container .lds-dual-ring:after {
   border: 6px solid #00ead3;
@@ -888,8 +918,6 @@ code {
   width: 200px;
   margin-top: 5px;
   transform: translateX(-70%);
-  background-color: #1c1c35;
-  color: #fff;
   font-family: inherit;
   border-radius: 5px;
   overflow: hidden;
@@ -902,23 +930,22 @@ code {
   padding: 1rem;
   width: 100%;
 }
-.dropdown-menu i {
-  color: #fff !important;
-}
 .dropdown-menu .dropdown-item {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 3rem;
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
   transition: all 0.3s;
 }
 .dropdown-menu .dropdown-item .icon-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
-}
-.dropdown-menu .dropdown-item .icon-left i {
-  padding: 10px;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.25);
 }
@@ -926,8 +953,6 @@ code {
   margin-left: auto;
 }
 .dropdown-menu .dropdown-item:hover {
-  color: #fff;
-  background-color: #ffd32a;
   cursor: pointer;
 }
 

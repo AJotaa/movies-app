@@ -4,14 +4,15 @@ function DropdownItem({
   children,
   leftIcon,
   rightIcon,
-  setActiveMenu,
-  goToMenu,
+  value,
+  clickEvent
 }) {
+
   return (
     <li
       className="dropdown-item"
       style={{ margin: 0 }}
-      onClick={() => goToMenu && setActiveMenu(goToMenu)}
+      onClick={() => value && clickEvent(value)}
     >
       <span className="icon-left">{leftIcon}</span>
       {children}

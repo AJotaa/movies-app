@@ -14,7 +14,8 @@ function App() {
   const [theme, setTheme] = useState("original");
 
   function selectTheme(e) {
-    setTheme(e.target.value);
+    setTheme(e);
+    console.log("test");
   }
 
   return (
@@ -43,7 +44,11 @@ function App() {
               }}
             />
             <Route path="/movie/:movieId" exact component={DetailPage} />
-            <Route path="/collection/:collectionId" exact component={CollectionPage} />
+            <Route
+              path="/collection/:collectionId"
+              exact
+              component={CollectionPage}
+            />
             <Route path="/auth/singup" exact component={SingupPage} />
             <Route component={NotFoundPage} />
           </Switch>

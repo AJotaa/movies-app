@@ -1,9 +1,6 @@
 import React from "react";
-import BaseButton from "../../ui/BaseButton";
-import ConfigOption from "./ConfigOption";
 import SearchBar from "./SearchBar";
 import NavItem from "./NavItem";
-// import DropdownItem from "../../ui/DropdownItem";
 import DropdownMenu from "../../ui/DropdownMenu";
 
 function HeaderControls({
@@ -12,6 +9,60 @@ function HeaderControls({
   handleSubmit,
   selectTheme,
 }) {
+  const icons = {
+    home: <i className="fas fa-home"></i>,
+    singup: <i className="fas fa-sign-in-alt"></i>,
+    more: <i className="fas fa-ellipsis-v"></i>,
+    arrow: <i className="fas fa-chevron-right"></i>,
+    settings: <i class="fas fa-cog"></i>,
+    themes: <i class="fas fa-swatchbook"></i>,
+  };
+
+  const itemsPrimary = [
+    {
+      type: "nav",
+      body: "Settings",
+      left: icons.settings,
+      right: icons.arrow,
+      value: "settings",
+    },
+    {
+      type: "nav",
+      body: "Themes",
+      left: icons.themes,
+      right: icons.arrow,
+      value: "themes",
+    },
+  ];
+  const itemsSecondary = {
+    settings: [
+      {
+        body: "test",
+        left: icons.settings,
+      },
+    ],
+    themes: [
+      {
+        type: "theme",
+        body: "Original",
+        left: icons.themes,
+        value: "original"
+      },
+      {
+        type: "theme",
+        body: "Forest",
+        left: icons.themes,
+        value: "green"
+      },
+      {
+        type: "theme",
+        body: "Candy",
+        left: icons.themes,
+        value: "pink"
+      },
+    ]
+  };
+
   return (
     <ul className="controls">
       <li>
@@ -23,30 +74,26 @@ function HeaderControls({
       </li>
       <NavItem
         mode="link"
-        icon={<i className="fas fa-home"></i>}
+        icon={icons.home}
         text="Home"
         link="/"
       />
       <NavItem
         mode="link"
-        icon={<i className="fas fa-sign-in-alt"></i>}
+        icon={icons.singup}
         text="Sign Up"
         link="/auth/singup"
       />
-      <li>
-        <BaseButton mode="select">
-          <ConfigOption selectTheme={selectTheme} />
-        </BaseButton>
-      </li>
       <NavItem
         mode="dropdown"
-        icon={<i className="fas fa-ellipsis-v"></i>}
+        icon={icons.more}
         text="More"
       >
-        <DropdownMenu>
-          {/* <DropdownItem>test</DropdownItem>
-          <DropdownItem>test2</DropdownItem> */}
-        </DropdownMenu>
+        <DropdownMenu
+          selectTheme={selectTheme}
+          itemsPrimary={itemsPrimary}
+          itemsSecondary={itemsSecondary}
+        />
       </NavItem>
     </ul>
   );

@@ -1,68 +1,95 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { CSSTransition } from "react-transition-group";
 import DropdownItem from "./DropdownItem";
-// import BaseButton from './BaseButton'
 
-function DropdownMenu() {
-  const [activeMenu, setActiveMenu] = useState("main");
-  const [menuHeight, setMenuHeight] = useState(null);
-  const icons = {
-    arrow: <i className="fas fa-chevron-right"></i>,
-    config: <i class="fas fa-cog"></i>,
-    themes: <i class="fas fa-swatchbook"></i>,
-  };
-
-  function calHeight(el) {
-    const height = el.offsetHeight;
-    setMenuHeight(height);
+class DropdownMenu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeMenu: "main",
+      menuHeight: null,
+    };
+    this.calHeight = this.calHeight.bind(this);
+    this.setActiveMenu = this.setActiveMenu.bind(this);
+    this.itemsList = this.itemsList.bind(this);
   }
-  console.log(menuHeight);
+  // const [activeMenu, setActiveMenu] = useState("main");
+  // const [menuHeight, setMenuHeight] = useState(null);
 
-  return (
-    <div className="dropdown-menu" style={{ height: menuHeight }}>
-      <CSSTransition
-        in={activeMenu === "main"}
-        unmountOnExit
-        timeout={300}
-        classNames="menu-primary"
-        onEnter={calHeight}
-      >
-        <ul className="menu">
-          <DropdownItem
-            leftIcon={icons.config}
-            rightIcon={icons.arrow}
-            setActiveMenu={setActiveMenu}
-            goToMenu="settings"
-          >
-            test
-          </DropdownItem>
-          <DropdownItem leftIcon={icons.themes}>test2</DropdownItem>
-        </ul>
-      </CSSTransition>
+  calHeight(el) {
+    const height = el.offsetHeight;
+    // setMenuHeight(height);
+    this.setState({
+      menuHeight: height,
+    });
+  }
 
-      <CSSTransition
-        in={activeMenu === "settings"}
-        unmountOnExit
-        timeout={300}
-        classNames="menu-secondary"
-        onEnter={calHeight}
-      >
-        <ul className="menu">
-          <DropdownItem
-            leftIcon={icons.config}
-            rightIcon={icons.arrow}
-            setActiveMenu={setActiveMenu}
-            goToMenu="main"
-          >
-            test3
-          </DropdownItem>
-          <DropdownItem leftIcon={icons.themes}>test4</DropdownItem>
-          <DropdownItem leftIcon={icons.themes}>test5</DropdownItem>
-          <DropdownItem leftIcon={icons.themes}>test6</DropdownItem>
-        </ul>
-      </CSSTransition>
-    </div>
-  );
+  setActiveMenu(value) {
+    this.setState({
+      activeMenu: value,
+    });
+  }
+
+  itemsList(items) {
+    return items.map((item, i) => {
+      let clickEvent = null;
+      if (item.type === "nav") {
+        clickEvent = this.setActiveMenu;
+      } else if (item.type === "theme") {
+        clickEvent = this.props.selectTheme;
+      }
+      return (
+        <DropdownItem
+          key={item.type + i}
+          leftIcon={item.left}
+          rightIcon={item.right}
+          value={item.value}
+          clickEvent={clickEvent}
+        >
+          {item.body}
+        </DropdownItem>
+      );
+    });
+  }
+
+  render() {
+    const { itemsPrimary, itemsSecondary } = this.props;
+    const { activeMenu, menuHeight } = this.state;
+    const itemListPrimary = this.itemsList(itemsPrimary);
+    const itemListSecondary =
+      activeMenu !== "main" && this.itemsList(itemsSecondary[activeMenu]);
+
+    return (
+      <div className="dropdown-menu" style={{ height: menuHeight }}>
+        <CSSTransition
+          in={activeMenu === "main"}
+          unmountOnExit
+          timeout={300}
+          classNames="menu-primary"
+          onEnter={this.calHeight}
+        >
+          <ul className="menu">{itemListPrimary}</ul>
+        </CSSTransition>
+
+        <CSSTransition
+          in={activeMenu !== "main" && activeMenu !== null}
+          unmountOnExit
+          timeout={300}
+          classNames="menu-secondary"
+          onEnter={this.calHeight}
+        >
+          <ul className="menu">
+            <DropdownItem
+              leftIcon={<i className="fas fa-chevron-left"></i>}
+              value="main"
+              clickEvent={this.setActiveMenu}
+            />
+            {itemListSecondary}
+          </ul>
+        </CSSTransition>
+      </div>
+    );
+  }
 }
 
 export default DropdownMenu;

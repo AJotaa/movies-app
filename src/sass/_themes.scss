@@ -119,6 +119,19 @@
     color: $alt-color;
   }
 
+  .dropdown-menu {
+    background-color: $first-color;
+    color: $thi-color;
+
+    i {
+      color: $thi-color !important;
+    }
+
+    .dropdown-item:hover {
+      background-color: $alt-color;
+    }
+  }
+
   .spinner-container {
     .lds-dual-ring:after {
       border: 6px solid $alt-color;
