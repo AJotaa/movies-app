@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 
 function NotFoundPage() {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   
   return (
     <motion.div

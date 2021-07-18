@@ -35,7 +35,11 @@ code {
   color: #fff;
 }
 .original #detail-page .back-shadow {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 60%, #000 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.7) 60%, #000 90%);
+}
+.original #detail-page .more-info button {
+  color: #fff;
+  border: solid 1px #ffd32a;
 }
 .original #detail-page i {
   color: #ffd32a;
@@ -115,7 +119,11 @@ code {
   color: #fff;
 }
 .green #detail-page .back-shadow {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 60%, #000 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.7) 60%, #000 90%);
+}
+.green #detail-page .more-info button {
+  color: #fff;
+  border: solid 1px #f55c47;
 }
 .green #detail-page i {
   color: #f55c47;
@@ -195,7 +203,11 @@ code {
   color: #000;
 }
 .pink #detail-page .back-shadow {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 60%, #ff8686 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.7) 60%, #ff8686 90%);
+}
+.pink #detail-page .more-info button {
+  color: #000;
+  border: solid 1px #00ead3;
 }
 .pink #detail-page i {
   color: #00ead3;
@@ -270,13 +282,22 @@ code {
   border-color: #00ead3 transparent #00ead3 transparent;
 }
 .pink #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.555) 70%, #ffcccc 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 0.555) 70%, #ffcccc 90%);
 }
 .pink #movies .hero-image .cover i {
   color: #00ead3;
 }
+.pink #detail-page {
+  font-weight: 600;
+}
+.pink #detail-page button {
+  font-weight: 600;
+}
+.pink #detail-page .tagline {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
 .pink #detail-page .back-shadow {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 0.4) 60%, #ffcccc 90%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.5) 60%, #ffcccc 90%);
 }
 
 #movies .movies-section,
@@ -477,12 +498,15 @@ code {
     margin: 10px;
   }
 }
+.movie-trailer {
+  background-color: black;
+}
+
 #detail-page {
   height: 100vh;
   max-width: 100vw;
   overflow: hidden;
   position: relative;
-  text-shadow: 1.25px 1.25px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 #detail-page .back-shadow {
@@ -491,6 +515,7 @@ code {
   margin: 0;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 #detail-page .back-shadow .detail-container {
   padding: 0;
@@ -500,37 +525,57 @@ code {
   align-items: flex-end;
   justify-content: space-between;
 }
+#detail-page .back-shadow .detail-container p {
+  margin: 0;
+  transition: all 0.3s;
+}
 #detail-page .back-shadow .detail-container .movie-detail {
   display: flex;
   flex-direction: column;
-  height: 50%;
   width: 80%;
   text-align: justify;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 #detail-page .back-shadow .detail-container .movie-detail .title {
   font-size: 2.5rem;
   margin-bottom: 5px;
+  transition: all 0.3s;
+  margin-bottom: 0;
 }
 #detail-page .back-shadow .detail-container .movie-detail .tagline {
   margin: 0;
 }
+#detail-page .back-shadow .detail-container .movie-detail .tagline i {
+  transition: all 0.3s;
+}
 #detail-page .back-shadow .detail-container .movie-detail .more-info-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  height: 70%;
+  justify-content: space-between;
+  height: 100%;
   font-size: 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-#detail-page .back-shadow .detail-container .movie-detail .more-info-container .more-info {
-  font-size: 1.4rem;
+#detail-page .back-shadow .detail-container .movie-detail .more-info-container li {
+  margin-top: 1rem;
+}
+#detail-page .back-shadow .detail-container .movie-detail .more-info-container i {
+  transition: all 0.3s;
 }
 #detail-page .back-shadow .detail-container .movie-detail .genres,
 #detail-page .back-shadow .detail-container .movie-detail .more-info {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   width: 70%;
+}
+#detail-page .back-shadow .detail-container .movie-detail .genres button,
+#detail-page .back-shadow .detail-container .movie-detail .more-info button {
+  font-size: inherit;
+  padding: 7px;
 }
 #detail-page .back-shadow .detail-container .movie-detail .genres span {
   display: flex;
@@ -546,15 +591,16 @@ code {
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
 }
 #detail-page .back-shadow .detail-container .collection img {
   height: 100%;
 }
-#detail-page p {
-  margin: 0;
+#detail-page .back-shadow .detail-container .collection:hover {
+  transform: scale(1.07);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   #detail-page .back-shadow .detail-container {
     padding: 0 20px;
   }
@@ -568,7 +614,7 @@ code {
     height: 100%;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   #detail-page .back-shadow {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 70%);
   }
@@ -582,7 +628,7 @@ code {
   }
   #detail-page .back-shadow .detail-container .movie-detail .title {
     font-size: 2rem;
-    margin: 5px 0;
+    margin: 0;
   }
   #detail-page .back-shadow .detail-container .movie-detail .tagline {
     font-size: 1.5rem;
@@ -590,13 +636,16 @@ code {
   #detail-page .back-shadow .detail-container .movie-detail .more-info-container {
     height: auto;
     display: grid;
-    grid-template-rows: auto auto auto;
-    grid-gap: 20px;
+    grid-template-rows: auto auto auto auto auto;
     font-size: 1rem;
     margin: 20px 0;
   }
   #detail-page .back-shadow .detail-container .movie-detail .more-info-container .more-info {
     font-size: 1rem;
+  }
+  #detail-page .back-shadow .detail-container .movie-detail .more-info-container .more-info .nav-button {
+    padding: 5px;
+    margin-top: 10px;
   }
   #detail-page .back-shadow .detail-container .movie-detail .genres,
 #detail-page .back-shadow .detail-container .movie-detail .more-info {
@@ -924,7 +973,7 @@ code {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px 2px;
   z-index: 1;
   overflow: hidden;
-  transition: height 0.3s;
+  transition: all 0.3s;
 }
 .dropdown-menu ul {
   padding: 1rem;

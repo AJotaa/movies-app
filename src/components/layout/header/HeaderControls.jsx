@@ -14,8 +14,8 @@ function HeaderControls({
     singup: <i className="fas fa-sign-in-alt"></i>,
     more: <i className="fas fa-ellipsis-v"></i>,
     arrow: <i className="fas fa-chevron-right"></i>,
-    settings: <i class="fas fa-cog"></i>,
-    themes: <i class="fas fa-swatchbook"></i>,
+    settings: <i className="fas fa-cog"></i>,
+    themes: <i className="fas fa-swatchbook"></i>,
   };
 
   const itemsPrimary = [

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import BaseCard from "../components/ui/BaseCard";
 import BaseButton from "../components/ui/BaseButton";
 import BackButton from "../components/ui/BackButton";
 
 function SingupPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <motion.div
       id="signup-container"

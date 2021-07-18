@@ -16,12 +16,6 @@ function BaseButton({ mode, link, children, click }) {
         </button>
       </div>
     );
-  } else if (mode === "select") {
-    return (
-      <div id="base-button">
-        <button className="select-button">{children}</button>
-      </div>
-    );
   } else if (mode === "left") {
     return (
       <button className="light-button" onClick={click}>

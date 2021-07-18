@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import movieTrailer from "movie-trailer";
+import YouTube from "react-youtube";
+import { API_URL, API_KEY, IMAGE_BASE_URL } from "../config.js";
 import TheSpinner from "../components/ui/TheSpinner.jsx";
 import DetailSection from "../components/detail/DetailSection.jsx";
-import { API_URL, API_KEY, IMAGE_BASE_URL } from "../config.js";
 import BackButton from "../components/ui/BackButton.jsx";
 
 class DetailPage extends Component {
@@ -10,8 +12,12 @@ class DetailPage extends Component {
     this.state = {
       movie: null,
       loading: true,
+      haveTrailer: null,
+      trailer: null,
+      showTrailer: false,
     };
     this.getMovie = this.getMovie.bind(this);
+    this.playTrailer = this.playTrailer.bind(this);
   }
 
   componentDidMount() {
@@ -25,16 +31,36 @@ class DetailPage extends Component {
 
     const response = await fetch(endpoint);
     const loadMovie = await response.json();
+    const haveTrailer = await movieTrailer(loadMovie.title);
+
     this.setState({
       movie: loadMovie,
       loading: false,
+      haveTrailer,
     });
+  }
 
-    console.log(loadMovie);
+  async playTrailer() {
+    try {
+      const trailer = await movieTrailer(this.state.movie.title);
+      let trailerArray = await trailer.split("=");
+      let selectTrailerId = (await trailerArray.length) - 1;
+      this.setState({
+        showTrailer: !this.state.showTrailer,
+        trailer: trailerArray[selectTrailerId],
+      });
+    } finally {
+      if (this.state.showTrailer === true) {
+        setTimeout(function () {
+          const elementTo = document.getElementById("trailer");
+          elementTo ? elementTo.scrollIntoView() : window.scroll(0, 480);
+        }, 500);
+      }
+    }
   }
 
   render() {
-    const { movie, loading } = this.state;
+    const { movie, loading, haveTrailer, trailer, showTrailer } = this.state;
     const backdrop = movie
       ? `url('${IMAGE_BASE_URL}original${movie.backdrop_path}')`
       : "#000";
@@ -45,6 +71,14 @@ class DetailPage extends Component {
       backgroundPosition: "center center",
     };
 
+    const opts = {
+      height: "420",
+      width: "100%",
+      playerVars: {
+        autoplay: 1,
+      },
+    };
+
     return (
       <div>
         {loading ? (
@@ -52,7 +86,19 @@ class DetailPage extends Component {
         ) : (
           <React.Fragment>
             <BackButton />
-            <DetailSection backgroundStyle={backgroundStyle} movie={movie} />
+
+            <DetailSection
+              backgroundStyle={backgroundStyle}
+              movie={movie}
+              haveTrailer={haveTrailer}
+              showTrailer={showTrailer}
+              playTrailer={this.playTrailer}
+            />
+            {showTrailer && (
+              <div className="movie-trailer" id="trailer">
+                <YouTube videoId={trailer} opts={opts} />
+              </div>
+            )}
           </React.Fragment>
         )}
       </div>

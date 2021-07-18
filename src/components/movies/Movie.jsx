@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IMAGE_BASE_URL } from "../../config.js";
 
-function Movie({ release_date, vote_average, id, poster_path, title, index }) {
+function Movie({ release_date, vote_average, id, poster_path, title }) {
   const date = release_date ? release_date.split("-") : "";
   const altImg =
     "https://reinobajito.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg";
@@ -18,7 +18,7 @@ function Movie({ release_date, vote_average, id, poster_path, title, index }) {
       return "#FFC312";
     } else if (vote_average >= 3.5) {
       return "#EE5A24";
-    } else {
+    } else if (vote_average) {
       return "#EA2027";
     }
   };
@@ -33,12 +33,12 @@ function Movie({ release_date, vote_average, id, poster_path, title, index }) {
           <div className="overview-container">
             <h4>{title}</h4>
             <div className="movie-resume">
-              <span>{date[0]}</span>
+              <span>{release_date ? date[0] : "TBA"}</span>
               <div
                 className="rating"
                 style={{ backgroundColor: ratingColor() }}
               >
-                <span>{vote_average}</span>
+                <span>{vote_average ? vote_average : ""}</span>
               </div>
             </div>
           </div>

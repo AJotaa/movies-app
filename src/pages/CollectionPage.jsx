@@ -28,13 +28,20 @@ class CollectionPage extends Component {
 
     const response = await fetch(endpoint);
     const loadCollection = await response.json();
-    await this.setState({
+    const sortedCollection = await loadCollection.parts.sort(function (a, b) {
+      if (a.release_date > b.release_date) {
+        return 1;
+      }
+      if (a.release_date < b.release_date) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
       collectionInfo: loadCollection,
-      movies: loadCollection.parts,
+      movies: sortedCollection,
       loading: false,
     });
-
-    console.log(loadCollection);
   }
 
   render() {
@@ -50,7 +57,6 @@ class CollectionPage extends Component {
       maxWidth: "100vw",
     };
 
-    console.log(backdrop);
     return (
       <div id="movies">
         {loading ? (

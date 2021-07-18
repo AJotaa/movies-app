@@ -16,10 +16,17 @@
     .back-shadow {
       background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0) 30%,
+        rgba(0, 0, 0, 0.1) 30%,
         rgba(0, 0, 0, 0.7) 60%,
         $sec-color 90%
       );
+    }
+
+    .more-info {
+      button {
+        color: $thi-color;
+        border: solid 1px $alt-color;
+      }
     }
 
     i {
@@ -161,7 +168,7 @@
       .cover {
         background: linear-gradient(
           to bottom,
-          rgba(0, 0, 0, 0) 50%,
+          rgba(0, 0, 0, 0) 30%,
           rgba(255, 255, 255, 0.555) 70%,
           $pink 90%
         );
@@ -174,11 +181,19 @@
   }
 
   #detail-page {
+    font-weight: 600;
+
+    button {
+      font-weight: 600;
+    }
+    .tagline{
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    }
     .back-shadow {
       background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0) 30%,
-        rgba(255, 255, 255, 0.4) 60%,
+        rgba(255, 255, 255, 0.1) 30%,
+        rgba(255, 255, 255, 0.5) 60%,
         $pink 90%
       );
     }

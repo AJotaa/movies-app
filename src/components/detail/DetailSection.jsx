@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import MoreInfo from "./MoreInfo";
+import MovieInfo from "./MovieInfo";
 import { IMAGE_BASE_URL } from "../../config.js";
 import { Link } from "react-router-dom";
 
-function DetailSection({ movie, backgroundStyle }) {
+function DetailSection({ movie, backgroundStyle, haveTrailer, playTrailer, showTrailer }) {
   return (
     <motion.section
       id="detail-page"
@@ -16,12 +16,9 @@ function DetailSection({ movie, backgroundStyle }) {
       <div className="back-shadow">
         <div className="detail-container container">
           <div className="movie-detail">
-            <h1 className="title">{movie.title}</h1>
-            <h2 className="tagline">
-              <i>{movie.tagline}</i>
-            </h2>
-            <MoreInfo movie={movie} />
+            <MovieInfo movie={movie} playTrailer={playTrailer} haveTrailer={haveTrailer} showTrailer={showTrailer} />
           </div>
+
           {movie.belongs_to_collection && (
             <div
               className="collection"

@@ -1,3 +1,3 @@
 # movies-app
 
-A responsive movies catalog made with Reac
+A responsive movies catalog made with React

@@ -18,8 +18,9 @@ function HeroImage({ topMovies, selectControl, selectedMovie }) {
       exit={{ opacity: 0 }}
     >
       <img src={backdrop} alt={title} />
-      <HeroImgControls selectControl={selectControl} />
+      
       <HeroImgCover selectedMovies={selectedMovies} />
+      <HeroImgControls selectControl={selectControl} />
     </motion.div>
   );
 }

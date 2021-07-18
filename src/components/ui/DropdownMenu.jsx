@@ -40,7 +40,7 @@ class DropdownMenu extends Component {
       }
       return (
         <DropdownItem
-          key={item.type + i}
+          key={item.body + i}
           leftIcon={item.left}
           rightIcon={item.right}
           value={item.value}
