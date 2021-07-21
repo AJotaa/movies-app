@@ -21,13 +21,6 @@ function HeaderControls({
   const itemsPrimary = [
     {
       type: "nav",
-      body: "Settings",
-      left: icons.settings,
-      right: icons.arrow,
-      value: "settings",
-    },
-    {
-      type: "nav",
       body: "Themes",
       left: icons.themes,
       right: icons.arrow,

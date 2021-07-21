@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import movieTrailer from "movie-trailer";
 import YouTube from "react-youtube";
+import { CSSTransition } from "react-transition-group";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../config.js";
 import TheSpinner from "../components/ui/TheSpinner.jsx";
 import DetailSection from "../components/detail/DetailSection.jsx";
@@ -15,9 +16,11 @@ class DetailPage extends Component {
       haveTrailer: null,
       trailer: null,
       showTrailer: false,
+      loadTrailer: false,
     };
     this.getMovie = this.getMovie.bind(this);
     this.playTrailer = this.playTrailer.bind(this);
+    this.loadTrailer = this.loadTrailer.bind(this);
   }
 
   componentDidMount() {
@@ -41,26 +44,29 @@ class DetailPage extends Component {
   }
 
   async playTrailer() {
-    try {
-      const trailer = await movieTrailer(this.state.movie.title);
-      let trailerArray = await trailer.split("=");
-      let selectTrailerId = (await trailerArray.length) - 1;
-      this.setState({
-        showTrailer: !this.state.showTrailer,
-        trailer: trailerArray[selectTrailerId],
-      });
-    } finally {
-      if (this.state.showTrailer === true) {
-        setTimeout(function () {
-          const elementTo = document.getElementById("trailer");
-          elementTo ? elementTo.scrollIntoView() : window.scroll(0, 480);
-        }, 500);
-      }
+    let trailerArray = await this.state.haveTrailer.split("=");
+    let selectTrailerId = (await trailerArray.length) - 1;
+    this.setState({
+      showTrailer: !this.state.showTrailer,
+      trailer: trailerArray[selectTrailerId],
+    });
+  }
+
+  loadTrailer() {
+    this.setState({
+      loadTrailer: !this.state.loadTrailer,
+    });
+    if (this.state.showTrailer === true) {
+      setTimeout(function () {
+        const elementTo = document.getElementById("trailer");
+        elementTo ? elementTo.scrollIntoView() : window.scroll(0, 480);
+      }, 300);
     }
   }
 
   render() {
-    const { movie, loading, haveTrailer, trailer, showTrailer } = this.state;
+    const { movie, loading, haveTrailer, trailer, showTrailer, loadTrailer } =
+      this.state;
     const backdrop = movie
       ? `url('${IMAGE_BASE_URL}original${movie.backdrop_path}')`
       : "#000";
@@ -94,11 +100,18 @@ class DetailPage extends Component {
               showTrailer={showTrailer}
               playTrailer={this.playTrailer}
             />
-            {showTrailer && (
+            <CSSTransition
+              in={showTrailer}
+              unmountOnExit
+              timeout={300}
+              classNames="trailer-transition"
+              onEntering={this.loadTrailer}
+              onExit={this.loadTrailer}
+            >
               <div className="movie-trailer" id="trailer">
-                <YouTube videoId={trailer} opts={opts} />
+                {loadTrailer && <YouTube videoId={trailer} opts={opts} />}
               </div>
-            )}
+            </CSSTransition>
           </React.Fragment>
         )}
       </div>

@@ -10,9 +10,16 @@
     justify-content: space-between;
     height: 100%;
 
-    .input {
+    .singup-input {
       display: flex;
       flex-direction: column;
+      
+      input {
+        border-radius: 2rem;
+        border: solid 1px #000;
+        outline: none;
+        padding: 0.5rem;
+      }
 
       label {
         margin-bottom: 5px;
@@ -23,7 +30,7 @@
       margin: 5px auto;
       display: flex;
       justify-content: space-between;
-      width: 80%;
+      width: 30%;
     }
   }
 }

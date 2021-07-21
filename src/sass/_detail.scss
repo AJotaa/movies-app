@@ -1,7 +1,3 @@
-.movie-trailer {
-  background-color: black;
-}
-
 #detail-page {
   height: 100vh;
   max-width: 100vw;
@@ -17,7 +13,6 @@
     height: 100%;
     width: 100%;
     overflow: auto;
-    
 
     .detail-container {
       padding: 0;
@@ -26,17 +21,19 @@
       width: 100%;
       align-items: flex-end;
       justify-content: space-between;
-      
+      transition: all 0.3s ease;
 
       p {
         margin: 0;
-        transition: all 0.3s;
+      }
+
+      i {
+        transition: all 0.3s ease;
       }
 
       .movie-detail {
         display: flex;
         flex-direction: column;
-        // height: 50%;
         width: 80%;
         text-align: justify;
         justify-content: flex-end;
@@ -44,16 +41,11 @@
         .title {
           font-size: 2.5rem;
           margin-bottom: 5px;
-          transition: all 0.3s;
           margin-bottom: 0;
         }
 
         .tagline {
           margin: 0;
-
-          i {
-            transition: all 0.3s;
-          }
         }
 
         .more-info-container {
@@ -69,11 +61,6 @@
           li {
             margin-top: 1rem;
           }
-
-          i {
-            transition: all 0.3s;
-          }
-
         }
 
         .genres,
@@ -83,7 +70,7 @@
           justify-content: space-between;
           align-items: center;
           width: 70%;
-          
+          transition: all 0.3s ease;
 
           button {
             font-size: inherit;
@@ -121,9 +108,31 @@
         transform: scale(1.07);
       }
     }
-  }  
+  }
 }
 
+.movie-trailer {
+  height: 420px;
+}
+
+// transition--------------------------
+// 
+.trailer-transition-enter {
+  height: 0px;
+}
+
+.trailer-transition-enter-active {
+  height: 420px;
+  transition: all 300ms ease;
+}
+
+.trailer-transition-exit-active {
+  height: 0px;
+  transition: all 300ms ease;
+}
+
+// reponsive--------------------------
+// 
 @media (max-width: 1280px) {
   #detail-page {
     .back-shadow {
@@ -136,7 +145,7 @@
 
         .collection {
           height: 15rem;
-    
+
           img {
             height: 100%;
           }
@@ -156,7 +165,6 @@
       );
 
       .detail-container {
-
         height: 100%;
         .movie-detail {
           height: 100%;
@@ -175,7 +183,6 @@
             height: auto;
             display: grid;
             grid-template-rows: auto auto auto auto auto;
-            // grid-gap: 20px;
             font-size: 1rem;
             margin: 20px 0;
 

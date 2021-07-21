@@ -20,11 +20,11 @@ function SingupPage() {
       <BackButton />
       <BaseCard title="Sign Up" text="Work in progress...">
         <div className="signup-controls">
-          <div className="input">
+          <div className="singup-input">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" placeholder="example@mail.com" />
           </div>
-          <div className="input">
+          <div className="singup-input">
             <label htmlFor="password">Password</label>
             <input
               type="password"

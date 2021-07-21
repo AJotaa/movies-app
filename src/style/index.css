@@ -44,6 +44,9 @@ code {
 .original #detail-page i {
   color: #ffd32a;
 }
+.original .movie-trailer {
+  background-color: #000;
+}
 .original #header i {
   color: #ffd32a;
 }
@@ -57,7 +60,7 @@ code {
   color: #000;
 }
 .original #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, #1c1c35 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, #1c1c35 90%);
   color: #fff;
 }
 .original #movies .hero-image .cover i {
@@ -128,6 +131,9 @@ code {
 .green #detail-page i {
   color: #f55c47;
 }
+.green .movie-trailer {
+  background-color: #000;
+}
 .green #header i {
   color: #f55c47;
 }
@@ -141,7 +147,7 @@ code {
   color: #000;
 }
 .green #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, #184d47 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, #184d47 90%);
   color: #fff;
 }
 .green #movies .hero-image .cover i {
@@ -212,6 +218,9 @@ code {
 .pink #detail-page i {
   color: #00ead3;
 }
+.pink .movie-trailer {
+  background-color: #ff8686;
+}
 .pink #header i {
   color: #00ead3;
 }
@@ -225,7 +234,7 @@ code {
   color: #000;
 }
 .pink #movies .hero-image .cover {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, #ffcccc 90%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, #ffcccc 90%);
   color: #000;
 }
 .pink #movies .hero-image .cover i {
@@ -298,6 +307,9 @@ code {
 }
 .pink #detail-page .back-shadow {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.5) 60%, #ffcccc 90%);
+}
+.pink .movie-trailer {
+  background-color: #ffcccc;
 }
 
 #movies .movies-section,
@@ -375,7 +387,7 @@ code {
   font-size: 1.5rem;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   #movies .movies-container {
     margin: auto;
     grid-template-columns: auto auto auto auto;
@@ -386,7 +398,7 @@ code {
     max-width: 100%;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   #movies .movies-container {
     grid-template-columns: auto auto;
   }
@@ -403,12 +415,18 @@ code {
   color: #fff;
   height: 100vh;
 }
-#movies .hero-image img {
+#movies .hero-image .hero-img-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+#movies .hero-image .hero-img-container img {
+  position: absolute;
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-#movies .hero-image .cover {
+#movies .hero-image .hero-img-container .cover {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -419,32 +437,38 @@ code {
   z-index: 0;
   top: 0;
   left: 0;
-  padding-left: 50px;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
-#movies .hero-image .cover .poster {
+#movies .hero-image .hero-img-container .cover .poster {
   height: 15rem;
   width: 10rem;
   object-fit: cover;
   overflow: hidden;
   margin-left: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.69) 0px 15px 20px -10px;
+  position: relative;
 }
-#movies .hero-image .cover .poster img {
+#movies .hero-image .hero-img-container .cover .poster img {
   height: 100%;
 }
-#movies .hero-image .cover .cover-info {
+#movies .hero-image .hero-img-container .cover .cover-info {
   display: flex;
   flex-direction: column;
   margin: 20px;
+  padding-left: 20px;
   width: 60%;
 }
-#movies .hero-image .cover .cover-info .year-rating {
+#movies .hero-image .hero-img-container .cover .cover-info p {
+  margin: 0;
+}
+#movies .hero-image .hero-img-container .cover .cover-info .year-rating {
   display: flex;
   font-size: 1.2rem;
 }
-#movies .hero-image .cover .cover-info .year-rating span {
+#movies .hero-image .hero-img-container .cover .cover-info .year-rating span {
   margin-right: 20px;
 }
 #movies .hero-image .controls {
@@ -476,12 +500,12 @@ code {
   opacity: 0.4;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   #movies .hero-image {
     height: 60vh;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   #movies .hero-image .cover {
     padding-left: 0px;
   }
@@ -498,8 +522,23 @@ code {
     margin: 10px;
   }
 }
-.movie-trailer {
-  background-color: black;
+.hero-img-transition-enter {
+  position: absolute;
+  opacity: 0;
+}
+
+.hero-img-transition-enter-active {
+  opacity: 1;
+  transition: all 500ms ease;
+}
+
+.hero-img-transition-exit {
+  position: absolute;
+}
+
+.hero-img-transition-exit-active {
+  opacity: 0;
+  transition: all 500ms ease;
 }
 
 #detail-page {
@@ -524,10 +563,13 @@ code {
   width: 100%;
   align-items: flex-end;
   justify-content: space-between;
+  transition: all 0.3s ease;
 }
 #detail-page .back-shadow .detail-container p {
   margin: 0;
-  transition: all 0.3s;
+}
+#detail-page .back-shadow .detail-container i {
+  transition: all 0.3s ease;
 }
 #detail-page .back-shadow .detail-container .movie-detail {
   display: flex;
@@ -539,14 +581,10 @@ code {
 #detail-page .back-shadow .detail-container .movie-detail .title {
   font-size: 2.5rem;
   margin-bottom: 5px;
-  transition: all 0.3s;
   margin-bottom: 0;
 }
 #detail-page .back-shadow .detail-container .movie-detail .tagline {
   margin: 0;
-}
-#detail-page .back-shadow .detail-container .movie-detail .tagline i {
-  transition: all 0.3s;
 }
 #detail-page .back-shadow .detail-container .movie-detail .more-info-container {
   display: flex;
@@ -561,9 +599,6 @@ code {
 #detail-page .back-shadow .detail-container .movie-detail .more-info-container li {
   margin-top: 1rem;
 }
-#detail-page .back-shadow .detail-container .movie-detail .more-info-container i {
-  transition: all 0.3s;
-}
 #detail-page .back-shadow .detail-container .movie-detail .genres,
 #detail-page .back-shadow .detail-container .movie-detail .more-info {
   display: flex;
@@ -571,6 +606,7 @@ code {
   justify-content: space-between;
   align-items: center;
   width: 70%;
+  transition: all 0.3s ease;
 }
 #detail-page .back-shadow .detail-container .movie-detail .genres button,
 #detail-page .back-shadow .detail-container .movie-detail .more-info button {
@@ -598,6 +634,24 @@ code {
 }
 #detail-page .back-shadow .detail-container .collection:hover {
   transform: scale(1.07);
+}
+
+.movie-trailer {
+  height: 420px;
+}
+
+.trailer-transition-enter {
+  height: 0px;
+}
+
+.trailer-transition-enter-active {
+  height: 420px;
+  transition: all 300ms ease;
+}
+
+.trailer-transition-exit-active {
+  height: 0px;
+  transition: all 300ms ease;
 }
 
 @media (max-width: 1280px) {
@@ -670,18 +724,24 @@ code {
   justify-content: space-between;
   height: 100%;
 }
-#signup-container .signup-controls .input {
+#signup-container .signup-controls .singup-input {
   display: flex;
   flex-direction: column;
 }
-#signup-container .signup-controls .input label {
+#signup-container .signup-controls .singup-input input {
+  border-radius: 2rem;
+  border: solid 1px #000;
+  outline: none;
+  padding: 0.5rem;
+}
+#signup-container .signup-controls .singup-input label {
   margin-bottom: 5px;
 }
 #signup-container .signup-controls .controls-buttons {
   margin: 5px auto;
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 30%;
 }
 
 #not-found {
@@ -779,6 +839,9 @@ code {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%);
   color: #fff;
 }
+#header i {
+  transition: all 0.3s ease;
+}
 #header .navbar {
   top: 0;
   left: 0;
@@ -823,7 +886,7 @@ code {
   transition: all 0.3s ease-out;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   #header .navbar .logo a {
     font-size: 3rem;
   }
@@ -831,7 +894,7 @@ code {
     display: none;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   #header .navbar .search-bar {
     margin-left: 45px;
   }
@@ -844,8 +907,8 @@ code {
   grid-template-rows: 1fr 2fr;
   align-items: center;
   grid-gap: 10px;
-  height: 300px;
-  width: 600px;
+  height: 20rem;
+  width: 40rem;
   background-color: #f1f2f3;
   padding: 25px;
   border-radius: 10px;
@@ -933,7 +996,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  height: 100vh;
   width: 100%;
 }
 

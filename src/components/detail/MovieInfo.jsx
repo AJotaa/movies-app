@@ -54,7 +54,7 @@ function MovieInfo({ movie, playTrailer, haveTrailer, showTrailer }) {
         <div className="more-info">
           <span>
             <i className="fas fa-star-half-alt"></i>{" "}
-            {vote_average ? vote_average : "TBA"}
+            {vote_average ? vote_average : "N/A"}
           </span>
           <span>
             <i className="fas fa-calendar-alt"></i>{" "}
@@ -62,7 +62,7 @@ function MovieInfo({ movie, playTrailer, haveTrailer, showTrailer }) {
           </span>
           <span>
             <i className="fas fa-clock"></i>{" "}
-            {runtime ? `${runtimeHour}h:${runtimeMin}m` : "TBA"}
+            {runtime ? `${runtimeHour}h:${runtimeMin}m` : "N/A"}
           </span>
           {budget > 0 && (
             <span>

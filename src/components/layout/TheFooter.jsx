@@ -7,7 +7,7 @@ function TheFooter() {
         <ul className="contact">
           <li>
             <a
-              href="/"
+              href="https://www.facebook.com/adrian.aristimuno.3/"
               target="_blank"
               rel="noreferrer noopener"
               title="Facebook"
@@ -28,7 +28,7 @@ function TheFooter() {
           </li>
           <li>
             <a
-              href="/"
+              href="https://www.instagram.com/adrianjotaa/"
               target="_blank"
               rel="noreferrer noopener"
               title="Instagram"
@@ -41,10 +41,10 @@ function TheFooter() {
           Made with React<i className="fab fa-react"></i> by AJota
         </span>
         <div className="credits">
-          <a href="https://www.themoviedb.org/" target="blank">
+          <a href="https://www.themoviedb.org/" target="blank" title="TMDb">
             <img
               src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-              alt=""
+              alt="The Movie Database"
             />
           </a>
         </div>
