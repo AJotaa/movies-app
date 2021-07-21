@@ -1,14 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { CSSTransition } from "react-transition-group";
 import HeroImgControls from "./HeroImgControls.jsx";
 import HeroImgCover from "./HeroImgCover.jsx";
 import { IMAGE_BASE_URL } from "../../../config.js";
 
 function HeroImage({ topMovies, selectControl, selectedMovie }) {
-  const selectedMovies = topMovies[selectedMovie];
 
-  const { backdrop_path, title } = selectedMovies;
-  const backdrop = `${IMAGE_BASE_URL}original${backdrop_path}`;
+  const heroMovie = topMovies.map((m, i) => {
+    let backdrop = `${IMAGE_BASE_URL}original${m.backdrop_path}`;
+    console.log(i === selectedMovie);
+    return (
+      <CSSTransition
+        key={m.id}
+        unmountOnExit
+        in={i === selectedMovie}
+        timeout={500}
+        classNames="hero-img-transition"
+        // appear={true}
+      >
+        <div className="hero-img-container">
+          <img src={backdrop} alt={m.title} />
+          <HeroImgCover selectedMovies={m} />
+        </div>
+      </CSSTransition>
+    );
+  });
 
   return (
     <motion.div
@@ -17,9 +34,7 @@ function HeroImage({ topMovies, selectControl, selectedMovie }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <img src={backdrop} alt={title} />
-      
-      <HeroImgCover selectedMovies={selectedMovies} />
+      {heroMovie}
       <HeroImgControls selectControl={selectControl} />
     </motion.div>
   );

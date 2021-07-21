@@ -9,7 +9,6 @@ function HeroImgCover({ selectedMovies }) {
     release_date,
     overview,
     poster_path,
-
     id,
   } = selectedMovies;
 
