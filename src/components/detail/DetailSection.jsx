@@ -4,7 +4,7 @@ import MovieInfo from "./MovieInfo";
 import { IMAGE_BASE_URL } from "../../config.js";
 import { Link } from "react-router-dom";
 
-function DetailSection({ movie, backgroundStyle, haveTrailer, playTrailer, showTrailer }) {
+function DetailSection({ movie, backgroundStyle, trailerOpt, playTrailer }) {
   return (
     <motion.section
       id="detail-page"
@@ -16,7 +16,11 @@ function DetailSection({ movie, backgroundStyle, haveTrailer, playTrailer, showT
       <div className="back-shadow">
         <div className="detail-container container">
           <div className="movie-detail">
-            <MovieInfo movie={movie} playTrailer={playTrailer} haveTrailer={haveTrailer} showTrailer={showTrailer} />
+            <MovieInfo
+              movie={movie}
+              trailerOpt={trailerOpt}
+              playTrailer={playTrailer}
+            />
           </div>
 
           {movie.belongs_to_collection && (

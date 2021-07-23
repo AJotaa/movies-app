@@ -9,15 +9,13 @@ function HeroImage({ topMovies, selectControl, selectedMovie }) {
 
   const heroMovie = topMovies.map((m, i) => {
     let backdrop = `${IMAGE_BASE_URL}original${m.backdrop_path}`;
-    console.log(i === selectedMovie);
     return (
       <CSSTransition
         key={m.id}
         unmountOnExit
         in={i === selectedMovie}
-        timeout={500}
+        timeout={300}
         classNames="hero-img-transition"
-        // appear={true}
       >
         <div className="hero-img-container">
           <img src={backdrop} alt={m.title} />

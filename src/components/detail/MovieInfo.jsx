@@ -1,7 +1,7 @@
 import React from "react";
 import BaseButton from "../ui/BaseButton";
 
-function MovieInfo({ movie, playTrailer, haveTrailer, showTrailer }) {
+function MovieInfo({ movie, trailerOpt, playTrailer }) {
   const {
     title,
     tagline,
@@ -13,7 +13,7 @@ function MovieInfo({ movie, playTrailer, haveTrailer, showTrailer }) {
     budget,
   } = movie;
 
-  const trailerIcon = !showTrailer ? (
+  const trailerIcon = !trailerOpt.showTrailer ? (
     <i class="fas fa-play-circle"></i>
   ) : (
     <i class="fas fa-stop-circle"></i>
@@ -69,7 +69,7 @@ function MovieInfo({ movie, playTrailer, haveTrailer, showTrailer }) {
               <i className="fas fa-money-bill-wave"></i> {budgetCom}
             </span>
           )}
-          {haveTrailer && (
+          {trailerOpt.haveTrailer && (
             <BaseButton mode="nav" click={playTrailer}>
               {trailerIcon} Trailer
             </BaseButton>

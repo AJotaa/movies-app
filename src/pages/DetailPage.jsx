@@ -14,7 +14,7 @@ class DetailPage extends Component {
       movie: null,
       loading: true,
       haveTrailer: null,
-      trailer: null,
+      trailerId: null,
       showTrailer: false,
       loadTrailer: false,
     };
@@ -48,7 +48,7 @@ class DetailPage extends Component {
     let selectTrailerId = (await trailerArray.length) - 1;
     this.setState({
       showTrailer: !this.state.showTrailer,
-      trailer: trailerArray[selectTrailerId],
+      trailerId: trailerArray[selectTrailerId],
     });
   }
 
@@ -65,7 +65,7 @@ class DetailPage extends Component {
   }
 
   render() {
-    const { movie, loading, haveTrailer, trailer, showTrailer, loadTrailer } =
+    const { movie, loading, haveTrailer, trailerId, showTrailer, loadTrailer } =
       this.state;
     const backdrop = movie
       ? `url('${IMAGE_BASE_URL}original${movie.backdrop_path}')`
@@ -96,8 +96,7 @@ class DetailPage extends Component {
             <DetailSection
               backgroundStyle={backgroundStyle}
               movie={movie}
-              haveTrailer={haveTrailer}
-              showTrailer={showTrailer}
+              trailerOpt={{ showTrailer, haveTrailer }}
               playTrailer={this.playTrailer}
             />
             <CSSTransition
@@ -109,7 +108,7 @@ class DetailPage extends Component {
               onExit={this.loadTrailer}
             >
               <div className="movie-trailer" id="trailer">
-                {loadTrailer && <YouTube videoId={trailer} opts={opts} />}
+                {loadTrailer && <YouTube videoId={trailerId} opts={opts} />}
               </div>
             </CSSTransition>
           </React.Fragment>
