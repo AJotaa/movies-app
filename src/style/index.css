@@ -529,7 +529,7 @@ code {
 
 .hero-img-transition-enter-active {
   opacity: 1;
-  transition: all 500ms ease;
+  transition: all 300ms ease;
 }
 
 .hero-img-transition-exit {
@@ -538,7 +538,7 @@ code {
 
 .hero-img-transition-exit-active {
   opacity: 0;
-  transition: all 500ms ease;
+  transition: all 300ms ease;
 }
 
 #detail-page {
@@ -750,14 +750,21 @@ code {
   overflow: hidden;
 }
 
+#movies .collection {
+  min-height: 100vh;
+}
 #movies .collection .back-shadow {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, black 100%);
+  min-height: 100vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, black 100%);
 }
 #movies .collection .collection-info {
   margin-top: 70px;
   margin-bottom: 30px;
   text-shadow: 1px 1px 2px #000;
   font-size: 1.2rem;
+}
+#movies .collection .movies-list {
+  min-height: auto;
 }
 
 #footer {
