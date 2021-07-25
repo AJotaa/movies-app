@@ -14,9 +14,9 @@ function MovieInfo({ movie, trailerOpt, playTrailer }) {
   } = movie;
 
   const trailerIcon = !trailerOpt.showTrailer ? (
-    <i class="fas fa-play-circle"></i>
+    <i className="fas fa-play-circle"></i>
   ) : (
-    <i class="fas fa-stop-circle"></i>
+    <i className="fas fa-stop-circle"></i>
   );
 
   const genresList = genres

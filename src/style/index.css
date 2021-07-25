@@ -44,7 +44,8 @@ code {
 .original #detail-page i {
   color: #ffd32a;
 }
-.original .movie-trailer {
+.original .movie-trailer,
+.original .detail-credits {
   background-color: #000;
 }
 .original #header i {
@@ -131,7 +132,8 @@ code {
 .green #detail-page i {
   color: #f55c47;
 }
-.green .movie-trailer {
+.green .movie-trailer,
+.green .detail-credits {
   background-color: #000;
 }
 .green #header i {
@@ -218,7 +220,8 @@ code {
 .pink #detail-page i {
   color: #00ead3;
 }
-.pink .movie-trailer {
+.pink .movie-trailer,
+.pink .detail-credits {
   background-color: #ff8686;
 }
 .pink #header i {
@@ -308,7 +311,8 @@ code {
 .pink #detail-page .back-shadow {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.5) 60%, #ffcccc 90%);
 }
-.pink .movie-trailer {
+.pink .movie-trailer,
+.pink .detail-credits {
   background-color: #ffcccc;
 }
 
@@ -637,19 +641,87 @@ code {
 }
 
 .movie-trailer {
-  height: 420px;
+  padding-top: 5rem;
+  height: calc(480px + 5rem);
+  transition: all 0.3s ease;
+}
+
+.detail-credits {
+  background-color: black;
+}
+.detail-credits .container {
+  padding: 0;
+}
+.detail-credits .container .cast-and-directors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  padding: 1.5rem 0;
+  transition: all 0.3s ease;
+}
+.detail-credits .container .cast-and-directors ul {
+  padding: 0;
+}
+.detail-credits .container .cast-and-directors li {
+  list-style: none;
+  margin-bottom: 0.2rem;
+}
+.detail-credits .container .cast-and-directors .cast h3 {
+  margin: 0;
+}
+.detail-credits .container .cast-and-directors .cast .cast-list .cast-items,
+.detail-credits .container .cast-and-directors .cast .cast-list li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.detail-credits .container .cast-and-directors .cast .cast-list .cast-items h4,
+.detail-credits .container .cast-and-directors .cast .cast-list li h4 {
+  margin: 0.5rem 0;
+}
+.detail-credits .container .prod-companies {
+  padding-bottom: 2rem;
+}
+.detail-credits .container .prod-companies .companies-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.detail-credits .container .prod-companies .companies-list .companie-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  list-style: none;
+  margin-right: 1rem;
+  height: 5rem;
+  width: 9rem;
+  border-radius: 100px;
+  margin-top: 1rem;
+  text-align: center;
+  color: #000;
+}
+.detail-credits .container .prod-companies .companies-list .companie-item img {
+  height: 80%;
+  width: 80%;
+  object-fit: scale-down;
 }
 
 .trailer-transition-enter {
   height: 0px;
+  padding-top: 0px;
 }
 
 .trailer-transition-enter-active {
-  height: 420px;
+  padding-top: 5rem;
+  height: calc(480px + 5rem);
   transition: all 300ms ease;
 }
 
 .trailer-transition-exit-active {
+  padding-top: 0px;
   height: 0px;
   transition: all 300ms ease;
 }
@@ -666,6 +738,10 @@ code {
   }
   #detail-page .back-shadow .detail-container .collection img {
     height: 100%;
+  }
+
+  .detail-credits .container {
+    padding: 0 20px;
   }
 }
 @media (max-width: 720px) {

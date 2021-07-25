@@ -2,49 +2,71 @@ import React, { Component } from "react";
 import movieTrailer from "movie-trailer";
 import YouTube from "react-youtube";
 import { CSSTransition } from "react-transition-group";
-import { API_URL, API_KEY, IMAGE_BASE_URL } from "../config.js";
+import { API_URL, API_KEY } from "../config.js";
 import TheSpinner from "../components/ui/TheSpinner.jsx";
 import DetailSection from "../components/detail/DetailSection.jsx";
 import BackButton from "../components/ui/BackButton.jsx";
+import DetailCredits from "../components/detail/DetailCredits.jsx";
 
 class DetailPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movie: null,
-      loading: true,
-      haveTrailer: null,
+      castAndCrew: null,
       trailerId: null,
       showTrailer: false,
       loadTrailer: false,
+      loading: true,
     };
     this.getMovie = this.getMovie.bind(this);
     this.playTrailer = this.playTrailer.bind(this);
     this.loadTrailer = this.loadTrailer.bind(this);
+    this.getCast = this.getCast.bind(this);
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     this.getMovie();
+    this.getCast();
   }
 
   async getMovie() {
     const { movieId } = this.props.match.params;
     let endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 
-    const response = await fetch(endpoint);
-    const loadMovie = await response.json();
-    const haveTrailer = await movieTrailer(loadMovie.title);
+    try {
+      const response = await fetch(endpoint);
+      const loadMovie = await response.json();
+      const trailerId = await movieTrailer(loadMovie.title);
 
-    this.setState({
-      movie: loadMovie,
-      loading: false,
-      haveTrailer,
-    });
+      this.setState({
+        movie: loadMovie,
+        trailerId,
+        loading: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getCast() {
+    const { movieId } = this.props.match.params;
+    let endpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`;
+    try {
+      const response = await fetch(endpoint);
+      const loadCast = await response.json();
+
+      this.setState({
+        castAndCrew: loadCast,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async playTrailer() {
-    let trailerArray = await this.state.haveTrailer.split("=");
+    let trailerArray = await this.state.trailerId.split("=");
     let selectTrailerId = (await trailerArray.length) - 1;
     this.setState({
       showTrailer: !this.state.showTrailer,
@@ -59,26 +81,17 @@ class DetailPage extends Component {
     if (this.state.showTrailer === true) {
       setTimeout(function () {
         const elementTo = document.getElementById("trailer");
-        elementTo ? elementTo.scrollIntoView() : window.scroll(0, 480);
+        elementTo && elementTo.scrollIntoView();
       }, 300);
     }
   }
 
   render() {
-    const { movie, loading, haveTrailer, trailerId, showTrailer, loadTrailer } =
+    const { movie, loading, trailerId, showTrailer, loadTrailer, castAndCrew } =
       this.state;
-    const backdrop = movie
-      ? `url('${IMAGE_BASE_URL}original${movie.backdrop_path}')`
-      : "#000";
-    const backgroundStyle = {
-      background: backdrop,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundPosition: "center center",
-    };
 
     const opts = {
-      height: "420",
+      height: "480",
       width: "100%",
       playerVars: {
         autoplay: 1,
@@ -94,9 +107,8 @@ class DetailPage extends Component {
             <BackButton />
 
             <DetailSection
-              backgroundStyle={backgroundStyle}
               movie={movie}
-              trailerOpt={{ showTrailer, haveTrailer }}
+              trailerOpt={{ showTrailer, haveTrailer: trailerId }}
               playTrailer={this.playTrailer}
             />
             <CSSTransition
@@ -111,6 +123,14 @@ class DetailPage extends Component {
                 {loadTrailer && <YouTube videoId={trailerId} opts={opts} />}
               </div>
             </CSSTransition>
+            {castAndCrew.cast.length > 0 ||
+            castAndCrew.crew.length > 0 ||
+            movie.production_companies.length > 0 ? (
+              <DetailCredits
+                castAndCrew={castAndCrew}
+                movieCompanies={movie.production_companies}
+              />
+            ) : null}
           </React.Fragment>
         )}
       </div>

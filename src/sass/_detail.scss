@@ -3,7 +3,6 @@
   max-width: 100vw;
   overflow: hidden;
   position: relative;
-  // text-shadow: 1.25px 1.25px rgba(0, 0, 0, 0.5);
   z-index: 1;
 
   .back-shadow {
@@ -112,27 +111,110 @@
 }
 
 .movie-trailer {
-  height: 420px;
+  padding-top: 5rem;
+  height: calc(480px + 5rem);
+  transition: all 0.3s ease;
+}
+
+.detail-credits {
+  background-color: black;
+
+  .container {
+    padding: 0;
+
+    .cast-and-directors {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 50%;
+      padding: 1.5rem 0;
+      transition: all 0.3s ease;
+
+      ul {
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+        margin-bottom: 0.2rem;
+        
+      }
+
+      .cast {
+        h3 {
+          margin: 0;
+        }
+
+        .cast-list {
+          .cast-items,
+          li {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            h4 {
+              margin: 0.5rem 0;
+            }
+          }
+        }
+      }
+    }
+
+    .prod-companies {
+      padding-bottom: 2rem;
+
+      .companies-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        .companie-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $white;
+          list-style: none;
+          margin-right: 1rem;
+          height: 5rem;
+          width: 9rem;
+          border-radius: 100px;
+          margin-top: 1rem;
+          text-align: center;
+          color: $black;
+
+          img {
+            height: 80%;
+            width: 80%;
+            object-fit: scale-down;
+          }
+        }
+      }
+    }
+  }
 }
 
 // transition--------------------------
-// 
+//
 .trailer-transition-enter {
   height: 0px;
+  padding-top: 0px;
 }
 
 .trailer-transition-enter-active {
-  height: 420px;
+  padding-top: 5rem;
+  height: calc(480px + 5rem);
   transition: all 300ms ease;
 }
 
 .trailer-transition-exit-active {
+  padding-top: 0px;
   height: 0px;
   transition: all 300ms ease;
 }
 
 // reponsive--------------------------
-// 
+//
 @media (max-width: 1280px) {
   #detail-page {
     .back-shadow {
@@ -151,6 +233,12 @@
           }
         }
       }
+    }
+  }
+
+  .detail-credits {
+    .container {
+      padding: 0 20px;
     }
   }
 }
