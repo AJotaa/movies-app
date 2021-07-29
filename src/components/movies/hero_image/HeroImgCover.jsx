@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { IMAGE_BASE_URL } from "../../../config.js";
+import { IMAGE_BASE_URL, IMAGE_SIZE } from "../../../config.js";
+import TheSpinner from "../../ui/TheSpinner.jsx";
 
 function HeroImgCover({ selectedMovies }) {
-  const {
-    title,
-    vote_average,
-    release_date,
-    overview,
-    poster_path,
-    id,
-  } = selectedMovies;
+  const [imgLoading, setImgLoading] = useState(true);
 
-  const poster = `${IMAGE_BASE_URL}w200${poster_path}`;
+  const { title, vote_average, release_date, overview, poster_path, id } =
+    selectedMovies;
+
+  const poster = `${IMAGE_BASE_URL}${IMAGE_SIZE.small}${poster_path}`;
 
   const date = release_date ? release_date.split("-") : "";
 
@@ -22,11 +19,14 @@ function HeroImgCover({ selectedMovies }) {
     <div className="cover">
       <div className="poster">
         <Link to={moviePath}>
-          <img src={poster} alt="" />
+          {imgLoading && <TheSpinner mode="small" />}
+          <img src={poster} alt="" onLoad={() => setImgLoading(false)} />
         </Link>
       </div>
       <div className="cover-info">
-        <h2>{title}</h2>
+        <Link to={moviePath}>
+          <h2>{title}</h2>
+        </Link>
         <div className="year-rating">
           <span>
             <i className="fas fa-star-half-alt"></i> {vote_average}

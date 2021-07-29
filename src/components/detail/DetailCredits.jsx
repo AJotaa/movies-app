@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGE_BASE_URL } from "../../config.js";
+import { IMAGE_BASE_URL, IMAGE_SIZE } from "../../config.js";
 
 function DetailCredits({ castAndCrew, movieCompanies }) {
   const cast = castAndCrew && castAndCrew.cast.slice(0, 10);
@@ -30,7 +30,7 @@ function DetailCredits({ castAndCrew, movieCompanies }) {
         <li className="companie-item" title={item.name}>
           {item.logo_path ? (
             <img
-              src={`${IMAGE_BASE_URL}w154${item.logo_path}`}
+              src={`${IMAGE_BASE_URL}${IMAGE_SIZE.xSmall}${item.logo_path}`}
               alt={item.name}
             />
           ) : (

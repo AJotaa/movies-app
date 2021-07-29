@@ -1,13 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { motion } from "framer-motion";
 import MovieInfo from "./MovieInfo";
-import { IMAGE_BASE_URL } from "../../config.js";
+import { IMAGE_BASE_URL, IMAGE_SIZE } from "../../config.js";
 import { Link } from "react-router-dom";
+import TheSpinner from "../ui/TheSpinner";
 
 function DetailSection({ movie, trailerOpt, playTrailer }) {
+  const [imgLoading, setImgLoading] = useState(true);
+
   const backdrop =
     movie && movie.backdrop_path
-      ? `url('${IMAGE_BASE_URL}original${movie.backdrop_path}')`
+      ? `url('${IMAGE_BASE_URL}${IMAGE_SIZE.xLarge}${movie.backdrop_path}')`
       : "url(https://sublenceevents.com/wp-content/uploads/2017/08/img_placeholder.jpg)";
   const backgroundStyle = {
     background: backdrop,
@@ -15,6 +18,16 @@ function DetailSection({ movie, trailerOpt, playTrailer }) {
     backgroundSize: "cover",
     backgroundPosition: "center center",
   };
+
+  const altImg =
+    "https://reinobajito.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg";
+
+  const showImage =
+  movie.belongs_to_collection &&
+  movie.belongs_to_collection.poster_path
+    ? `${IMAGE_BASE_URL}${IMAGE_SIZE.small}${movie.belongs_to_collection.poster_path}`
+    : altImg;
+
   return (
     <motion.section
       id="detail-page"
@@ -39,9 +52,11 @@ function DetailSection({ movie, trailerOpt, playTrailer }) {
               title={movie.belongs_to_collection.name}
             >
               <Link to={`/collection/${movie.belongs_to_collection.id}`}>
+                { imgLoading && <TheSpinner mode="small" />}
                 <img
-                  src={`${IMAGE_BASE_URL}w300${movie.belongs_to_collection.poster_path}`}
+                  src={showImage}
                   alt=""
+                  onLoad={() => setImgLoading(false)}
                 />
               </Link>
             </div>

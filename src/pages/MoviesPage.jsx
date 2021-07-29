@@ -38,7 +38,7 @@ class MoviesPage extends Component {
     // interval of the heroimage
     this.intervalId = setInterval(() => {
       this.selectControl("next", false);
-    }, 5000);
+    }, 6000);
   }
 
   componentDidUpdate(previusProps) {

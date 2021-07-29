@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IMAGE_BASE_URL } from "../../config.js";
+import { IMAGE_BASE_URL, IMAGE_SIZE } from "../../config.js";
 
 function Movie({ release_date, vote_average, id, poster_path, title }) {
   const date = release_date ? release_date.split("-") : "";
@@ -8,7 +8,7 @@ function Movie({ release_date, vote_average, id, poster_path, title }) {
     "https://reinobajito.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg";
 
   const showImage = poster_path
-    ? `${IMAGE_BASE_URL}w300${poster_path}`
+    ? `${IMAGE_BASE_URL}${IMAGE_SIZE.medium}${poster_path}`
     : altImg;
 
   let ratingColor = function () {

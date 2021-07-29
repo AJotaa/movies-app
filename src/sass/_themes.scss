@@ -64,8 +64,11 @@
           rgba(0, 0, 0, 0.4) 60%,
           $first-color 90%
         );
-
         color: $thi-color;
+
+        a {
+          color: $thi-color;
+        }
 
         i {
           color: $alt-color;
@@ -143,7 +146,7 @@
     }
   }
 
-  .spinner-container {
+  #the-spinner {
     .lds-dual-ring:after {
       border: 6px solid $alt-color;
       border-color: $alt-color transparent $alt-color transparent;
@@ -190,7 +193,7 @@
     button {
       font-weight: 600;
     }
-    .tagline{
+    .tagline {
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
     }
     .back-shadow {
