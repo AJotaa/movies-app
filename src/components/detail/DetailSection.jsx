@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import MovieInfo from "./MovieInfo";
+import DetailInfo from "./DetailInfo";
 import { IMAGE_BASE_URL, IMAGE_SIZE } from "../../config.js";
 import { Link } from "react-router-dom";
 import TheSpinner from "../ui/TheSpinner";
@@ -23,10 +23,9 @@ function DetailSection({ movie, trailerOpt, playTrailer }) {
     "https://reinobajito.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg";
 
   const showImage =
-  movie.belongs_to_collection &&
-  movie.belongs_to_collection.poster_path
-    ? `${IMAGE_BASE_URL}${IMAGE_SIZE.small}${movie.belongs_to_collection.poster_path}`
-    : altImg;
+    movie.belongs_to_collection && movie.belongs_to_collection.poster_path
+      ? `${IMAGE_BASE_URL}${IMAGE_SIZE.small}${movie.belongs_to_collection.poster_path}`
+      : altImg;
 
   return (
     <motion.section
@@ -38,28 +37,26 @@ function DetailSection({ movie, trailerOpt, playTrailer }) {
     >
       <div className="back-shadow">
         <div className="detail-container container">
-          <div className="movie-detail">
-            <MovieInfo
-              movie={movie}
-              trailerOpt={trailerOpt}
-              playTrailer={playTrailer}
-            />
-          </div>
+          <DetailInfo
+            movie={movie}
+            trailerOpt={trailerOpt}
+            playTrailer={playTrailer}
+          />
 
           {movie.belongs_to_collection && (
-            <div
-              className="collection"
-              title={movie.belongs_to_collection.name}
-            >
-              <Link to={`/collection/${movie.belongs_to_collection.id}`}>
-                { imgLoading && <TheSpinner mode="small" />}
+            <Link to={`/collection/${movie.belongs_to_collection.id}`}>
+              <div
+                className="collection"
+                title={movie.belongs_to_collection.name}
+              >
+                {imgLoading && <TheSpinner mode="small" />}
                 <img
                   src={showImage}
                   alt=""
                   onLoad={() => setImgLoading(false)}
                 />
-              </Link>
-            </div>
+              </div>
+            </Link>
           )}
         </div>
       </div>

@@ -590,80 +590,89 @@ code {
 #detail-page .back-shadow .detail-container i {
   transition: all 0.3s ease;
 }
-#detail-page .back-shadow .detail-container .movie-detail {
-  display: flex;
-  flex-direction: column;
+#detail-page .back-shadow .detail-container .detail-info {
   width: 80%;
   text-align: justify;
   justify-content: flex-end;
 }
-#detail-page .back-shadow .detail-container .movie-detail .title {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
-  margin-bottom: 0;
-}
-#detail-page .back-shadow .detail-container .movie-detail .tagline {
-  margin: 0;
-}
-#detail-page .back-shadow .detail-container .movie-detail .more-info-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+#detail-page .back-shadow .detail-container .detail-info .detail-info-container {
   font-size: 1.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-#detail-page .back-shadow .detail-container .movie-detail .more-info-container li {
+#detail-page .back-shadow .detail-container .detail-info .detail-info-container div {
   margin-top: 1rem;
 }
-#detail-page .back-shadow .detail-container .movie-detail .genres,
-#detail-page .back-shadow .detail-container .movie-detail .more-info {
+#detail-page .back-shadow .detail-container .detail-info .title h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  margin-bottom: 0;
+}
+#detail-page .back-shadow .detail-container .detail-info .tagline h2 {
+  margin: 0;
+}
+#detail-page .back-shadow .detail-container .detail-info .genres ul,
+#detail-page .back-shadow .detail-container .detail-info .more-info ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 70%;
   transition: all 0.3s ease;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
-#detail-page .back-shadow .detail-container .movie-detail .genres button,
-#detail-page .back-shadow .detail-container .movie-detail .more-info button {
+#detail-page .back-shadow .detail-container .detail-info .genres ul li,
+#detail-page .back-shadow .detail-container .detail-info .more-info ul li {
+  margin: 0;
+}
+#detail-page .back-shadow .detail-container .detail-info .genres ul li #base-button,
+#detail-page .back-shadow .detail-container .detail-info .more-info ul li #base-button {
+  margin: 0;
+}
+#detail-page .back-shadow .detail-container .detail-info .genres ul li #base-button button,
+#detail-page .back-shadow .detail-container .detail-info .more-info ul li #base-button button {
   font-size: inherit;
   padding: 7px;
 }
-#detail-page .back-shadow .detail-container .movie-detail .genres span {
+#detail-page .back-shadow .detail-container .detail-info .genres ul li {
   display: flex;
   align-items: center;
 }
-#detail-page .back-shadow .detail-container .movie-detail .genres i {
+#detail-page .back-shadow .detail-container .detail-info .genres ul li i {
   font-size: 0.6rem;
   margin: 0 5px 0 0;
 }
 #detail-page .back-shadow .detail-container .collection {
-  height: 278px;
-  width: 185px;
+  height: 270px;
+  min-width: 180px;
   overflow: hidden;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #detail-page .back-shadow .detail-container .collection img {
-  height: 278px;
-  width: 185px;
+  height: 100%;
 }
 #detail-page .back-shadow .detail-container .collection:hover {
   transform: scale(1.07);
 }
 
 .movie-trailer {
-  padding-top: 5rem;
-  height: calc(480px + 5rem);
+  padding: 5rem 0;
+  height: calc(480px + 10rem);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .detail-credits {
+  position: relative;
   background-color: black;
 }
 .detail-credits .container {
@@ -712,13 +721,14 @@ code {
   justify-content: center;
   background-color: #fff;
   list-style: none;
-  margin-right: 1rem;
   height: 5rem;
-  width: 9rem;
+  width: 7rem;
   border-radius: 100px;
-  margin-top: 1rem;
   text-align: center;
   color: #000;
+  padding: 5px;
+  margin-top: 1rem;
+  margin-right: 1rem;
 }
 .detail-credits .container .prod-companies .companies-list .companie-item img {
   height: 80%;
@@ -728,17 +738,17 @@ code {
 
 .trailer-transition-enter {
   height: 0px;
-  padding-top: 0px;
+  padding: 0px;
 }
 
 .trailer-transition-enter-active {
-  padding-top: 5rem;
-  height: calc(480px + 5rem);
+  padding: 5rem 0;
+  height: 500px;
   transition: all 300ms ease;
 }
 
 .trailer-transition-exit-active {
-  padding-top: 0px;
+  padding: 0px;
   height: 0px;
   transition: all 300ms ease;
 }
@@ -749,9 +759,6 @@ code {
   }
   #detail-page .back-shadow .detail-container .movie-detail {
     margin-right: 20px;
-  }
-  #detail-page .back-shadow .detail-container .collection {
-    height: 15rem;
   }
   #detail-page .back-shadow .detail-container .collection img {
     height: 100%;

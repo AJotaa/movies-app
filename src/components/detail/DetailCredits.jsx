@@ -23,11 +23,12 @@ function DetailCredits({ castAndCrew, movieCompanies }) {
       return <li key={d.credit_id}>{d.name}</li>;
     });
 
+
   const pordCompanies =
     movieCompanies &&
     movieCompanies.map((item) => {
       return (
-        <li className="companie-item" title={item.name}>
+        <li className="companie-item" title={item.name} key={item.id}>
           {item.logo_path ? (
             <img
               src={`${IMAGE_BASE_URL}${IMAGE_SIZE.xSmall}${item.logo_path}`}

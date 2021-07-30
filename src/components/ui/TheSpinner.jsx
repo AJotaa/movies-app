@@ -1,9 +1,9 @@
 import React from "react";
 
-function TheSpinner({ mode }) {
+function TheSpinner({ mode, style }) {
   if (mode === "small") {
     return (
-      <div id="the-spinner">
+      <div id="the-spinner" style={style}>
         <div></div>
         <div className="lds-dual-ring"></div>
         <div></div>

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import movieTrailer from "movie-trailer";
-import YouTube from "react-youtube";
-import { CSSTransition } from "react-transition-group";
+
 import { API_URL, API_KEY } from "../config.js";
 import TheSpinner from "../components/ui/TheSpinner.jsx";
 import DetailSection from "../components/detail/DetailSection.jsx";
 import BackButton from "../components/ui/BackButton.jsx";
 import DetailCredits from "../components/detail/DetailCredits.jsx";
+import DetailTrailer from "../components/detail/DetailTrailer.jsx";
 
 class DetailPage extends Component {
   constructor(props) {
@@ -16,12 +16,10 @@ class DetailPage extends Component {
       castAndCrew: null,
       trailerId: null,
       showTrailer: false,
-      loadTrailer: false,
       loading: true,
     };
     this.getMovie = this.getMovie.bind(this);
     this.playTrailer = this.playTrailer.bind(this);
-    this.loadTrailer = this.loadTrailer.bind(this);
     this.getCast = this.getCast.bind(this);
   }
 
@@ -65,37 +63,28 @@ class DetailPage extends Component {
     }
   }
 
-  async playTrailer() {
-    let trailerArray = await this.state.trailerId.split("=");
-    let selectTrailerId = (await trailerArray.length) - 1;
+  playTrailer() {
+    const trailerArray = this.state.trailerId.split("=");
+    const selectTrailerId = trailerArray.length - 1;
     this.setState({
       showTrailer: !this.state.showTrailer,
       trailerId: trailerArray[selectTrailerId],
     });
   }
 
-  loadTrailer() {
-    this.setState({
-      loadTrailer: !this.state.loadTrailer,
-    });
-    if (this.state.showTrailer === true) {
-      setTimeout(function () {
-        const elementTo = document.getElementById("trailer");
-        elementTo && elementTo.scrollIntoView();
-      }, 300);
-    }
-  }
-
   render() {
-    const { movie, loading, trailerId, showTrailer, loadTrailer, castAndCrew } =
-      this.state;
+    const { movie, loading, trailerId, showTrailer, castAndCrew } = this.state;
 
-    const opts = {
-      height: "480",
-      width: "100%",
-      playerVars: {
-        autoplay: 1,
-      },
+    const haveCastAndCrew = () => {
+      if (!loading) {
+        if (
+          castAndCrew.cast.length > 0 ||
+          castAndCrew.crew.length > 0 ||
+          movie.production_companies.length > 0
+        ) {
+          return true;
+        } else return false;
+      }
     };
 
     return (
@@ -111,26 +100,13 @@ class DetailPage extends Component {
               trailerOpt={{ showTrailer, haveTrailer: trailerId }}
               playTrailer={this.playTrailer}
             />
-            <CSSTransition
-              in={showTrailer}
-              unmountOnExit
-              timeout={300}
-              classNames="trailer-transition"
-              onEntering={this.loadTrailer}
-              onExit={this.loadTrailer}
-            >
-              <div className="movie-trailer" id="trailer">
-                {loadTrailer && <YouTube videoId={trailerId} opts={opts} />}
-              </div>
-            </CSSTransition>
-            {castAndCrew.cast.length > 0 ||
-            castAndCrew.crew.length > 0 ||
-            movie.production_companies.length > 0 ? (
+            <DetailTrailer showTrailer={showTrailer} trailerId={trailerId} />
+            {haveCastAndCrew() && (
               <DetailCredits
                 castAndCrew={castAndCrew}
                 movieCompanies={movie.production_companies}
               />
-            ) : null}
+            )}
           </React.Fragment>
         )}
       </div>
