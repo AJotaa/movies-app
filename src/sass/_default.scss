@@ -30,14 +30,18 @@ code {
   height: 100vh;
   width: 100vw;
   z-index: 0;
-  // background-color: rosybrown;
 }
 
-// @media (max-width: 1190px) {
+@media (max-width: 1280px) {
+  .container {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
 
-//   .container {
-
-//     padding: 0 10px;
-//   }
-
-// }
+@media (max-width: 720px) {
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}

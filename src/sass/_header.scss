@@ -12,7 +12,7 @@
     rgba(0, 0, 0, 0) 100%
   );
   color: $white;
-  
+
   i {
     transition: all 0.3s ease;
   }
@@ -48,10 +48,17 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      // font-size: 1rem;
 
-      li {
+      ul {
+        list-style: none;
+      }
+
+      .nav-item {
         margin: 0 10px;
+
+        a {
+          text-decoration: none;
+        }
       }
 
       .search-bar {
@@ -65,6 +72,10 @@
         font-family: inherit;
         font-size: 1rem;
         transition: all 0.3s ease-out;
+      }
+
+      .movil-menu {
+        display: none;
       }
     }
   }
@@ -89,11 +100,20 @@
 @media (max-width: 720px) {
   #header {
     .navbar {
-      .search-bar {
-        margin-left: 45px;
+      margin: 0;
+      .nav-search {
+        width: 50vw;
       }
-      #base-button {
+
+      .nav-item {
         display: none;
+      }
+
+      .movil-menu {
+        display: list-item !important;
+        .nav-item {
+          display: list-item;
+        }
       }
     }
   }

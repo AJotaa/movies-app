@@ -13,12 +13,9 @@ class DropdownMenu extends Component {
     this.setActiveMenu = this.setActiveMenu.bind(this);
     this.itemsList = this.itemsList.bind(this);
   }
-  // const [activeMenu, setActiveMenu] = useState("main");
-  // const [menuHeight, setMenuHeight] = useState(null);
 
   calHeight(el) {
     const height = el.offsetHeight;
-    // setMenuHeight(height);
     this.setState({
       menuHeight: height,
     });
@@ -44,6 +41,7 @@ class DropdownMenu extends Component {
           leftIcon={item.left}
           rightIcon={item.right}
           value={item.value}
+          type={item.type}
           clickEvent={clickEvent}
         >
           {item.body}

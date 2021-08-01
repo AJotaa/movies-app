@@ -56,7 +56,7 @@ function App() {
                 exact
                 component={CollectionPage}
               />
-              <Route path="/auth/singup" exact component={SignupPage} />
+              <Route path="/auth/signup" exact component={SignupPage} />
               <Route component={NotFoundPage} />
             </Switch>
           </AnimatePresence>

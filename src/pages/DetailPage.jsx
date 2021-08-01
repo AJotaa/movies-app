@@ -26,10 +26,10 @@ class DetailPage extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.getMovie();
-    this.getCast();
   }
 
   async getMovie() {
+    let isMounted = true;
     const { movieId } = this.props.match.params;
     let endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 
@@ -38,11 +38,16 @@ class DetailPage extends Component {
       const loadMovie = await response.json();
       const trailerId = await movieTrailer(loadMovie.title);
 
-      this.setState({
-        movie: loadMovie,
-        trailerId,
-        loading: false,
-      });
+      if (isMounted) {
+        this.setState({
+          movie: loadMovie,
+          trailerId,
+          loading: false,
+        });
+
+        this.getCast();
+      }
+      return () => (isMounted = false);
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +81,7 @@ class DetailPage extends Component {
     const { movie, loading, trailerId, showTrailer, castAndCrew } = this.state;
 
     const haveCastAndCrew = () => {
-      if (!loading) {
+      if (!loading && castAndCrew) {
         if (
           castAndCrew.cast.length > 0 ||
           castAndCrew.crew.length > 0 ||

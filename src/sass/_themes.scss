@@ -43,6 +43,9 @@
       color: $alt-color;
     }
     .controls {
+      a {
+        color: $thi-color;
+      }
       .search-bar {
         border: solid 2px $alt-color;
       }
@@ -152,6 +155,22 @@
       border-color: $alt-color transparent $alt-color transparent;
     }
   }
+
+  @media (max-width: 720px) {
+    #detail-page {
+      background: $sec-color !important;
+
+      .movil-img {
+        ::after {
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            $sec-color 70%
+          );
+        }
+      }
+    }
+  }
 }
 
 // ofiginal----------------------
@@ -208,5 +227,21 @@
   .movie-trailer,
   .detail-credits {
     background-color: $pink;
+  }
+
+  @media (max-width: 720px) {
+    #detail-page {
+      background: $pink !important;
+
+      .movil-img {
+        ::after {
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            $pink 70%
+          );
+        }
+      }
+    }
   }
 }

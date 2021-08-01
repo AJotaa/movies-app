@@ -7,7 +7,7 @@ function NavItem({ mode, icon, text, link, children }) {
 
   if (mode === "link") {
     return (
-      <li>
+      <li className="nav-item">
         <BaseButton mode={mode} link={link}>
           {icon} {text}
         </BaseButton>
@@ -15,7 +15,7 @@ function NavItem({ mode, icon, text, link, children }) {
     );
   } else {
     return (
-      <li>
+      <li className="nav-item">
         <BaseButton mode="nav" click={() => setOpen(!open)}>
           {icon} {text}
         </BaseButton>

@@ -27,6 +27,11 @@ function DetailSection({ movie, trailerOpt, playTrailer }) {
       ? `${IMAGE_BASE_URL}${IMAGE_SIZE.small}${movie.belongs_to_collection.poster_path}`
       : altImg;
 
+  const smallImg =
+    movie && movie.backdrop_path
+      ? `${IMAGE_BASE_URL}${IMAGE_SIZE.large}${movie.backdrop_path}`
+      : "url(https://sublenceevents.com/wp-content/uploads/2017/08/img_placeholder.jpg)";
+
   return (
     <motion.section
       id="detail-page"
@@ -35,6 +40,10 @@ function DetailSection({ movie, trailerOpt, playTrailer }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <div className="movil-img">
+        <img src={smallImg} alt={altImg} />
+        <div></div>
+      </div>
       <div className="back-shadow">
         <div className="detail-container container">
           <DetailInfo
