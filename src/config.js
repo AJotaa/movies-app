@@ -7,8 +7,8 @@ const IMAGE_SIZE ={
   xSmall: 'w92',
   small: 'w185',
   medium: 'w200',
-  large: 'w1280',
-  xLarge: 'original'
+  large: 'w300',
+  xLarge: 'w1280'
 }
 
 export { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE };
